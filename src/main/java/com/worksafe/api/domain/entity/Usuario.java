@@ -30,6 +30,19 @@ public class Usuario {
 
     private Endereco endereco;
 
+    // Construtor para Mapper request to model
+    public Usuario(String nome, String sobrenome, String cpf, String email, String telefone, Credenciais credenciais, String cargo, String departamento, Endereco endereco) {
+        setNome(nome);
+        setSobrenome(sobrenome);
+        setCpf(cpf);
+        setEmail(email);
+        setTelefone(telefone);
+        setCredenciais(credenciais);
+        setCargo(cargo);
+        setDepartamento(departamento);
+        setEndereco(endereco);
+    }
+
     public Long getId() {
         return id;
     }
@@ -159,7 +172,7 @@ public class Usuario {
         //regex para validar se telefone (xx)xxxxx-xxxx
         final String regex = "^\\(\\d{2}\\) \\d{4,5}-\\d{4}$";
         if (!telefone.matches(regex)) {
-            throw new ValidacaoDominioException("Telefone inválido, utilize o formato (DD)XXXXX-XXXX");
+            throw new ValidacaoDominioException("Telefone inválido, utilize o formato (DD) XXXXX-XXXX");
         }
     }
 
@@ -234,5 +247,20 @@ public class Usuario {
 
     public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+        isEnderecoValido();
+    }
+
+    private void isEnderecoValido() {
+        if  (endereco == null) {
+            throw new ValidacaoDominioException("É necessário informar um endereço");
+        }
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
     }
 }
