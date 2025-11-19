@@ -28,6 +28,8 @@ public class Usuario {
 
     private Boolean ativo;
 
+    private Endereco endereco;
+
     public Long getId() {
         return id;
     }
