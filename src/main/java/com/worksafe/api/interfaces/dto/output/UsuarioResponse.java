@@ -10,6 +10,7 @@ public record UsuarioResponse(
         String telefone,
         String cargo,
         String departamento,
-        LocalDateTime createdAt
+        LocalDateTime createdAt,
+        EnderecoResponse endereco
 ) {
 }

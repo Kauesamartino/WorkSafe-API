@@ -8,6 +8,7 @@ public record UsuarioRequest(
         String telefone,
         CredenciaisRequest credenciais,
         String cargo,
-        String departamento
+        String departamento,
+        EnderecoRequest endereco
 ) {
 }
