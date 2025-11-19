@@ -26,6 +26,8 @@ public class Usuario {
 
     private LocalDateTime createdAt;
 
+    private Boolean ativo;
+
     public Long getId() {
         return id;
     }
@@ -222,5 +224,13 @@ public class Usuario {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
     }
 }
