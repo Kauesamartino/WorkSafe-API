@@ -7,6 +7,8 @@ import com.worksafe.api.interfaces.dto.output.UsuarioDetailsResponse;
 import com.worksafe.api.interfaces.dto.output.UsuarioResponse;
 import com.worksafe.api.interfaces.mapper.UsuarioMapper;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 public final class UsuarioControllerImpl implements UsuarioController {
 
@@ -39,7 +41,8 @@ public final class UsuarioControllerImpl implements UsuarioController {
 
     @Override
     public Page<UsuarioDetailsResponse> listarTodosUsuarios(Integer pageSize, Integer pageNumber) {
-        Page<Usuario> usuariosPage = listarUsuariosUseCase.execute(pageSize, pageNumber);
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        Page<Usuario> usuariosPage = listarUsuariosUseCase.execute(pageable);
         return usuariosPage.map(UsuarioMapper::toDetailsResponse);
     }
 
