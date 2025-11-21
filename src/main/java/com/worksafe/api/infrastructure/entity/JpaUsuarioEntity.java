@@ -138,4 +138,8 @@ public class JpaUsuarioEntity {
     public Sexo getSexo() {
         return sexo;
     }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }
 }
