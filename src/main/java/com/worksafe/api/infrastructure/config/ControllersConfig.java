@@ -1,8 +1,11 @@
 package com.worksafe.api.infrastructure.config;
 
+import com.worksafe.api.application.usecase.recomendacao.ListarTodasRecomendacoesUseCase;
 import com.worksafe.api.application.usecase.alerta.BuscarAlertaPorIdUseCase;
 import com.worksafe.api.application.usecase.alerta.CriarAlertaUseCase;
 import com.worksafe.api.application.usecase.alerta.ListarTodosAlertasUseCase;
+import com.worksafe.api.application.usecase.recomendacao.BuscarRecomendacaoPorIdUseCase;
+import com.worksafe.api.application.usecase.recomendacao.CreateRecomendacaoUseCase;
 import com.worksafe.api.application.usecase.usuario.*;
 import com.worksafe.api.infrastructure.security.JwtUtil;
 import com.worksafe.api.interfaces.controller.*;
@@ -40,5 +43,15 @@ public class ControllersConfig {
         return new AlertaControllerImpl(
                 criarAlertaUseCase, buscarAlertaPorIdUseCase,
                 listarTodosAlertasUseCase, buscarUsuarioPorIdUseCase);
+    }
+
+    @Bean
+    public RecomendacaoController recomendacaoController(
+            CreateRecomendacaoUseCase createRecomendacaoUseCase, BuscarRecomendacaoPorIdUseCase buscarRecomendacaoPorIdUseCase,
+            ListarTodasRecomendacoesUseCase listarTodasRecomendacoesUseCase
+    ){
+        return new RecomendacaoControllerImpl(
+                createRecomendacaoUseCase, buscarRecomendacaoPorIdUseCase,
+                listarTodasRecomendacoesUseCase);
     }
 }
