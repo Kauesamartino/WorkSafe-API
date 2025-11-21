@@ -50,4 +50,32 @@ public class JpaAlertaEntity {
         this.data = data;
         this.resolvido = resolvido;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public JpaUsuarioEntity getJpaUsuarioEntity() {
+        return jpaUsuarioEntity;
+    }
+
+    public TipoAlerta getTipoAlerta() {
+        return tipoAlerta;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public Severidade getSeveridade() {
+        return severidade;
+    }
+
+    public LocalDateTime getData() {
+        return data;
+    }
+
+    public Boolean getResolvido() {
+        return resolvido;
+    }
 }

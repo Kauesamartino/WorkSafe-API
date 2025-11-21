@@ -32,8 +32,8 @@ public class DatabaseConfig {
     }
 
     @Bean
-    public AlertaRepository alertaRepository(JpaAlertaRepository jpaAlertaRepository) {
+    public AlertaRepository alertaRepository(JpaAlertaRepository jpaAlertaRepository, JpaUsuarioRepository jpaUsuarioRepository) {
         final Logger logger = LoggerFactory.getLogger(UsuarioRepositoryAdapter.class);
-        return new AlertaRepositoryAdapter(jpaAlertaRepository, logger);
+        return new AlertaRepositoryAdapter(jpaAlertaRepository, jpaUsuarioRepository, logger);
     }
 }

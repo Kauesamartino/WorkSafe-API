@@ -31,6 +31,16 @@ public class Alerta {
         this.resolvido = false;
     }
 
+    public Alerta(Long id, Long usuarioId, TipoAlerta tipoAlerta, String descricao, Severidade severidade, LocalDateTime data, Boolean resolvido) {
+        this.id = id;
+        this.usuarioId = usuarioId;
+        this.tipoAlerta = tipoAlerta;
+        this.descricao = descricao;
+        this.severidade = severidade;
+        this.data = data;
+        this.resolvido = resolvido;
+    }
+
     public Long getId() {
         return id;
     }
