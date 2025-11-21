@@ -1,6 +1,7 @@
 package com.worksafe.api.domain.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Recomendacao {
 
@@ -17,6 +18,15 @@ public class Recomendacao {
     private LocalDate createdAt;
 
     private Boolean consumido;
+
+    public Recomendacao(Long usuarioId, String tipoAtividade, String titulo, String descricao) {
+        this.usuarioId = usuarioId;
+        this.tipoAtividade = tipoAtividade;
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.createdAt = LocalDate.now();
+        this.consumido = false;
+    }
 
     public void setUsuarioId(Long usuarioId) {
         isUsuarioIdValido(usuarioId);
