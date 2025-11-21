@@ -127,4 +127,18 @@ public class UsuarioRepositoryAdapter implements UsuarioRepository {
             throw new InfraestruturaException("Erro ao desativar usuario com cpf: " + cpf, e);
         }
     }
+
+    @Override
+    public Usuario findById(Long id) {
+        logger.info("Buscando usuario por id: " + id);
+        try {
+            JpaUsuarioEntity entity = jpaUsuarioRepository.findById(id)
+                    .orElseThrow(() -> new EntidadeNaoEncontradaException("Usuário do id: " + id + " não encontrado"));
+            logger.info("Usuario encontrado: " + entity.getId() + " " + entity.getSobrenome());
+            return UsuarioMapper.entityToDomain(entity);
+        } catch (DataAccessException e){
+            logger.error("Erro ao buscar usuario: " + e.getMessage(), e);
+            throw new InfraestruturaException("Erro ao buscar usuario por id: " + e.getMessage());
+        }
+    }
 }
