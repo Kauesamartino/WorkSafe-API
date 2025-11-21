@@ -20,6 +20,16 @@ public class Autoavaliacao {
 
     private String comentarios;
 
+    public Autoavaliacao(Long usuarioId, Integer estresse, Integer humor, Integer energia, Integer qualidadeSono, String comentarios) {
+        this.usuarioId = usuarioId;
+        this.data = LocalDate.now();
+        this.estresse = estresse;
+        this.humor = humor;
+        this.energia = energia;
+        this.qualidadeSono = qualidadeSono;
+        this.comentarios = comentarios;
+    }
+
     public void setUsuarioId(Long usuarioId) {
         isUsuarioIdValido(usuarioId);
         this.usuarioId = usuarioId;
