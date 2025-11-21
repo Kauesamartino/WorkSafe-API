@@ -13,7 +13,7 @@ import com.worksafe.api.interfaces.mapper.AlertaMapper;
 
 import java.util.List;
 
-public class AlertaControllerImpl implements AlertaController {
+public final class AlertaControllerImpl implements AlertaController {
 
     private final CriarAlertaUseCase criarAlertaUseCase;
     private final BuscarAlertaPorIdUseCase buscarAlertaPorIdUseCase;
