@@ -2,6 +2,7 @@ package com.worksafe.api.domain.entity;
 
 import com.worksafe.api.domain.exception.ValidacaoDominioException;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Usuario {
@@ -24,6 +25,8 @@ public class Usuario {
 
     private String departamento;
 
+    private LocalDate dataNascimento;
+
     private LocalDateTime createdAt;
 
     private Boolean ativo;
@@ -31,7 +34,7 @@ public class Usuario {
     private Endereco endereco;
 
     // Construtor para Mapper request to model
-    public Usuario(String nome, String sobrenome, String cpf, String email, String telefone, Credenciais credenciais, String cargo, String departamento, Endereco endereco) {
+    public Usuario(String nome, String sobrenome, String cpf, String email, String telefone, Credenciais credenciais, String cargo, String departamento, LocalDate dataNascimento, Endereco endereco) {
         setNome(nome);
         setSobrenome(sobrenome);
         setCpf(cpf);
@@ -40,6 +43,9 @@ public class Usuario {
         setCredenciais(credenciais);
         setCargo(cargo);
         setDepartamento(departamento);
+        setDataNascimento(dataNascimento);
+        this.createdAt = LocalDateTime.now().minusHours(3);
+        this.ativo = true;
         setEndereco(endereco);
     }
 
@@ -157,6 +163,28 @@ public class Usuario {
         if (!email.matches(regex)) {
             throw new ValidacaoDominioException("Email inválido");
         }
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+        isDataNascimentoValido();
+    }
+
+    private void isDataNascimentoValido() {
+        if  (dataNascimento == null) {
+            throw new ValidacaoDominioException("É necessário informar a data de nascimento");
+        }
+
+        LocalDate hoje = LocalDate.now();
+        LocalDate idadeMinima = hoje.minusYears(18);
+
+        if (dataNascimento.isAfter(idadeMinima)) {
+            throw new ValidacaoDominioException("É necessário ter pelo menos 18 anos");
+        }
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
     }
 
     public String getTelefone() {

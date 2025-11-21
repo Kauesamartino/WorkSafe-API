@@ -1,5 +1,6 @@
 package com.worksafe.api.interfaces.dto.output;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public record UsuarioDetailsResponse(
@@ -8,6 +9,7 @@ public record UsuarioDetailsResponse(
         String cpf,
         String cargo,
         String departamento,
+        LocalDate dataDeNascimento,
         LocalDateTime createdAt
 ) {
 }

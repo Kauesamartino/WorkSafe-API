@@ -36,6 +36,7 @@ public final class UsuarioMapper {
                 credenciais,
                 request.cargo(),
                 request.departamento(),
+                request.dataNascimento(),
                 endereco
         );
     }
@@ -60,6 +61,7 @@ public final class UsuarioMapper {
                 createdUsuario.getTelefone(),
                 createdUsuario.getCargo(),
                 createdUsuario.getDepartamento(),
+                createdUsuario.getDataNascimento(),
                 createdUsuario.getCreatedAt(),
                 endereco
         );
@@ -72,6 +74,7 @@ public final class UsuarioMapper {
                 usuario.getCpf(),
                 usuario.getCargo(),
                 usuario.getDepartamento(),
+                usuario.getDataNascimento(),
                 usuario.getCreatedAt()
         );
     }

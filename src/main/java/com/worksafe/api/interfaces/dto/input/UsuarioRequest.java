@@ -1,5 +1,7 @@
 package com.worksafe.api.interfaces.dto.input;
 
+import java.time.LocalDate;
+
 public record UsuarioRequest(
         String nome,
         String sobrenome,
@@ -9,6 +11,7 @@ public record UsuarioRequest(
         CredenciaisRequest credenciais,
         String cargo,
         String departamento,
+        LocalDate dataNascimento,
         EnderecoRequest endereco
 ) {
 }
