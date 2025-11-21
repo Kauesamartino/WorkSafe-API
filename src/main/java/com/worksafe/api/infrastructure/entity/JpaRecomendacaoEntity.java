@@ -46,4 +46,32 @@ public class JpaRecomendacaoEntity {
         this.createdAt = createdAt;
         this.consumido = consumido;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public JpaUsuarioEntity getJpaUsuarioEntity() {
+        return jpaUsuarioEntity;
+    }
+
+    public String getTipoAtividade() {
+        return tipoAtividade;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
+
+    public Boolean getConsumido() {
+        return consumido;
+    }
 }

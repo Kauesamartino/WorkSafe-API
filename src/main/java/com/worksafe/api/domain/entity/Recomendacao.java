@@ -28,6 +28,16 @@ public class Recomendacao {
         this.consumido = false;
     }
 
+    public Recomendacao(Long id, Long usuarioId, String tipoAtividade, String titulo, String descricao, LocalDate createdAt, Boolean consumido) {
+        this.id = id;
+        this.usuarioId = usuarioId;
+        this.tipoAtividade = tipoAtividade;
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.createdAt = createdAt;
+        this.consumido = consumido;
+    }
+
     public void setUsuarioId(Long usuarioId) {
         isUsuarioIdValido(usuarioId);
         this.usuarioId = usuarioId;
