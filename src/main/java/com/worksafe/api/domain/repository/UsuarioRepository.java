@@ -15,4 +15,6 @@ public interface UsuarioRepository {
     void delete(String cpf);
 
     void deactivate(String cpf);
+
+    Usuario findById(Long id);
 }
