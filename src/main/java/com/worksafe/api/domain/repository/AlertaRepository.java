@@ -9,5 +9,5 @@ public interface AlertaRepository {
 
     Alerta create(Alerta alerta);
 
-    List<Alerta> findAllByAtivoTrue();
+    List<Alerta> findAll();
 }
