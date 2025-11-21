@@ -15,6 +15,6 @@ public final class ListarTodosAlertasUseCaseImpl implements  ListarTodosAlertasU
 
     @Override
     public List<Alerta> execute() {
-        return alertaRepository.findAllByAtivoTrue();
+        return alertaRepository.findAll();
     }
 }

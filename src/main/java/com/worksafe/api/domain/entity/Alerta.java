@@ -21,6 +21,16 @@ public class Alerta {
 
     private Boolean resolvido;
 
+    // request -> model
+    public Alerta(Long usuarioId, TipoAlerta tipoAlerta, String descricao, Severidade severidade) {
+        this.usuarioId = usuarioId;
+        this.tipoAlerta = tipoAlerta;
+        this.descricao = descricao;
+        this.severidade = severidade;
+        this.data = LocalDateTime.now().minusHours(3);
+        this.resolvido = false;
+    }
+
     public Long getId() {
         return id;
     }
