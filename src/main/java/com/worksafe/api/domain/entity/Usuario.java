@@ -316,4 +316,8 @@ public class Usuario {
     public Endereco getEndereco() {
         return endereco;
     }
+
+    public Sexo getSexo() {
+        return sexo;
+    }
 }

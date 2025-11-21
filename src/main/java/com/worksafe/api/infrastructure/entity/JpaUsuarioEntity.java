@@ -134,4 +134,8 @@ public class JpaUsuarioEntity {
     public LocalDate getDataNascimento() {
         return dataNascimento;
     }
+
+    public Sexo getSexo() {
+        return sexo;
+    }
 }
