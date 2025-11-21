@@ -3,7 +3,7 @@ package com.worksafe.api.application.usecase.usuario;
 import com.worksafe.api.domain.entity.Usuario;
 import com.worksafe.api.domain.repository.UsuarioRepository;
 
-public class BuscarUsuarioPorIdUseCaseImpl implements  BuscarUsuarioPorIdUseCase {
+public final class BuscarUsuarioPorIdUseCaseImpl implements  BuscarUsuarioPorIdUseCase {
 
     private final UsuarioRepository usuarioRepository;
 
