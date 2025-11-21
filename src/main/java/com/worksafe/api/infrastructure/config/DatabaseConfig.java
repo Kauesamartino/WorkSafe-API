@@ -2,14 +2,12 @@ package com.worksafe.api.infrastructure.config;
 
 import com.worksafe.api.domain.logging.Logger;
 import com.worksafe.api.domain.repository.AlertaRepository;
+import com.worksafe.api.domain.repository.RecomendacaoRepository;
 import com.worksafe.api.domain.repository.RoleRepository;
 import com.worksafe.api.domain.repository.UsuarioRepository;
 import com.worksafe.api.infrastructure.logging.LoggerFactory;
 import com.worksafe.api.infrastructure.persistance.*;
-import com.worksafe.api.infrastructure.repository.JpaAlertaRepository;
-import com.worksafe.api.infrastructure.repository.JpaCredenciaisRepository;
-import com.worksafe.api.infrastructure.repository.JpaRoleRepository;
-import com.worksafe.api.infrastructure.repository.JpaUsuarioRepository;
+import com.worksafe.api.infrastructure.repository.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -35,5 +33,11 @@ public class DatabaseConfig {
     public AlertaRepository alertaRepository(JpaAlertaRepository jpaAlertaRepository, JpaUsuarioRepository jpaUsuarioRepository) {
         final Logger logger = LoggerFactory.getLogger(UsuarioRepositoryAdapter.class);
         return new AlertaRepositoryAdapter(jpaAlertaRepository, jpaUsuarioRepository, logger);
+    }
+
+    @Bean
+    public RecomendacaoRepository recomendacaoRepository(JpaRecomendacaoRepository jpaRecomendacaoRepository, JpaUsuarioRepository jpaUsuarioRepository) {
+        final Logger logger = LoggerFactory.getLogger(RecomendacaoRepositoryAdapter.class);
+        return new RecomendacaoRepositoryAdapter(jpaRecomendacaoRepository, jpaUsuarioRepository, logger);
     }
 }
