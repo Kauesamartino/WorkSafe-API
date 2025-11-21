@@ -1,8 +1,10 @@
 package com.worksafe.api.infrastructure.entity;
 
 import com.worksafe.api.domain.entity.Endereco;
+import com.worksafe.api.domain.enums.Sexo;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -18,6 +20,9 @@ public class JpaUsuarioEntity {
 
     private String cpf;
 
+    @Enumerated(EnumType.STRING)
+    private Sexo sexo;
+
     private String email;
 
     private String telefone;
@@ -30,6 +35,8 @@ public class JpaUsuarioEntity {
 
     private String departamento;
 
+    private LocalDate dataNascimento;
+
     private LocalDateTime createdAt;
 
     private Boolean ativo;
@@ -40,28 +47,32 @@ public class JpaUsuarioEntity {
     public JpaUsuarioEntity() {
     }
 
-    public JpaUsuarioEntity(String nome, String sobrenome, String cpf, String email, String telefone, String cargo, String departamento, LocalDateTime createdAt, Boolean ativo, Endereco endereco) {
+    public JpaUsuarioEntity(Long id, String nome, String sobrenome, String cpf, Sexo sexo, String email, String telefone, String cargo, String departamento, LocalDate dataNascimento, LocalDateTime createdAt, Boolean ativo, Endereco endereco) {
+        this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
+        this.sexo = sexo;
         this.email = email;
         this.telefone = telefone;
         this.cargo = cargo;
         this.departamento = departamento;
+        this.dataNascimento = dataNascimento;
         this.createdAt = createdAt;
         this.ativo = ativo;
         this.endereco = endereco;
     }
 
-    public JpaUsuarioEntity(Long id, String nome, String sobrenome, String cpf, String email, String telefone, String cargo, String departamento, LocalDateTime createdAt, Boolean ativo, Endereco endereco) {
-        this.id = id;
+    public JpaUsuarioEntity(String nome, String sobrenome, String cpf, Sexo sexo, String email, String telefone, String cargo, String departamento, LocalDate dataNascimento, LocalDateTime createdAt, Boolean ativo, Endereco endereco) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
+        this.sexo = sexo;
         this.email = email;
         this.telefone = telefone;
         this.cargo = cargo;
         this.departamento = departamento;
+        this.dataNascimento = dataNascimento;
         this.createdAt = createdAt;
         this.ativo = ativo;
         this.endereco = endereco;
@@ -112,4 +123,15 @@ public class JpaUsuarioEntity {
     }
 
 
+    public void setCredenciais(JpaCredenciaisEntity credenciais) {
+        this.credenciais = credenciais;
+    }
+
+    public JpaCredenciaisEntity getCredenciais() {
+        return credenciais;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
 }

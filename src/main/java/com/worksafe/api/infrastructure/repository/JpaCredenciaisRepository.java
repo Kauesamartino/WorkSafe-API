@@ -4,7 +4,7 @@ import com.worksafe.api.infrastructure.entity.JpaCredenciaisEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-public interface JpaCredenciaisRepository extends JpaRepository<JpaCredenciaisRepository, Long> {
+public interface JpaCredenciaisRepository extends JpaRepository<JpaCredenciaisEntity, Long> {
     JpaCredenciaisEntity findByUsername(String username);
 
     @Query("SELECT u FROM JpaCredenciaisEntity u JOIN FETCH u.roles WHERE u.username = :username")

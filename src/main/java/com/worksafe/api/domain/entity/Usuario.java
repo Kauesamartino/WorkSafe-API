@@ -1,9 +1,11 @@
 package com.worksafe.api.domain.entity;
 
+import com.worksafe.api.domain.enums.Sexo;
 import com.worksafe.api.domain.exception.ValidacaoDominioException;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Usuario {
 
@@ -14,6 +16,8 @@ public class Usuario {
     private String sobrenome;
 
     private String cpf;
+
+    private Sexo sexo;
 
     private String email;
 
@@ -34,10 +38,11 @@ public class Usuario {
     private Endereco endereco;
 
     // Construtor para Mapper request to model
-    public Usuario(String nome, String sobrenome, String cpf, String email, String telefone, Credenciais credenciais, String cargo, String departamento, LocalDate dataNascimento, Endereco endereco) {
+    public Usuario(String nome, String sobrenome, String cpf, Sexo sexo, String email, String telefone, Credenciais credenciais, String cargo, String departamento, LocalDate dataNascimento, Endereco endereco) {
         setNome(nome);
         setSobrenome(sobrenome);
         setCpf(cpf);
+        this.sexo = sexo;
         setEmail(email);
         setTelefone(telefone);
         setCredenciais(credenciais);
@@ -46,6 +51,22 @@ public class Usuario {
         setDataNascimento(dataNascimento);
         this.createdAt = LocalDateTime.now().minusHours(3);
         this.ativo = true;
+        setEndereco(endereco);
+    }
+
+    public Usuario(Long id, String nome, String sobrenome, String cpf, Sexo sexo, String email, String telefone, String cargo, String departamento, LocalDate dataNascimento, LocalDateTime createdAt, Boolean ativo, Endereco endereco) {
+        this.id = id;
+        setNome(nome);
+        setSobrenome(sobrenome);
+        setCpf(cpf);
+        this.sexo = sexo;
+        setEmail(email);
+        setTelefone(telefone);
+        setCargo(cargo);
+        setDepartamento(departamento);
+        setDataNascimento(dataNascimento);
+        this.createdAt = createdAt;
+        this.ativo = ativo;
         setEndereco(endereco);
     }
 
@@ -147,6 +168,10 @@ public class Usuario {
         if (!valido) {
             throw new ValidacaoDominioException("CPF inválido");
         }
+    }
+
+    public void setSexo(Sexo sexo){
+        this.sexo = Objects.requireNonNullElse(sexo, Sexo.NAO_INFORMADO);
     }
 
     public String getEmail() {
