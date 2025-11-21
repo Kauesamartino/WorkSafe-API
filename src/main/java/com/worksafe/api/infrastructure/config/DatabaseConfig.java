@@ -1,8 +1,10 @@
 package com.worksafe.api.infrastructure.config;
 
 import com.worksafe.api.domain.logging.Logger;
+import com.worksafe.api.domain.repository.RoleRepository;
 import com.worksafe.api.domain.repository.UsuarioRepository;
 import com.worksafe.api.infrastructure.logging.LoggerFactory;
+import com.worksafe.api.infrastructure.persistance.RoleRepositoryAdapter;
 import com.worksafe.api.infrastructure.persistance.UsuarioRepositoryAdapter;
 import com.worksafe.api.infrastructure.repository.JpaCredenciaisRepository;
 import com.worksafe.api.infrastructure.repository.JpaRoleRepository;
@@ -20,6 +22,12 @@ public class DatabaseConfig {
         final Logger logger = LoggerFactory.getLogger(UsuarioRepositoryAdapter.class);
         final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         return new UsuarioRepositoryAdapter(jpaUsuarioRepository, jpaCredenciaisRepository, jpaRoleRepository, passwordEncoder, logger);
+    }
+
+    @Bean
+    public RoleRepository roleRepository(JpaRoleRepository jpaRoleRepository) {
+        final Logger logger = LoggerFactory.getLogger(UsuarioRepositoryAdapter.class);
+        return new RoleRepositoryAdapter(jpaRoleRepository, logger);
     }
 
 }
