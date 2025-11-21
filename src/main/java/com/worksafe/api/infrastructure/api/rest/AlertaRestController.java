@@ -41,7 +41,7 @@ public class AlertaRestController {
 
     @GetMapping
     public ResponseEntity<List<AlertaDetailsResponse>> listarTodosAlertas() {
-        final List<AlertaDetailsResponse> page = alertaController.listarTodosAlertas(pageSize, pageNumber);
+        final List<AlertaDetailsResponse> page = alertaController.listarTodosAlertas();
         return ResponseEntity.ok(page);
     }
 
