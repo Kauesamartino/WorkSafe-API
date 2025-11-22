@@ -43,10 +43,9 @@ public class AlertaRepositoryAdapter implements AlertaRepository {
     @Override
     public Alerta create(Alerta alerta) {
         logger.info("Criando um novo alerta para o usuário com id " + alerta.getUsuarioId());
-        JpaUsuarioEntity jpaUsuarioEntity = jpaUsuarioRepository.getReferenceById(alerta.getUsuarioId());
-        JpaAlertaEntity entity = AlertaMapper.toJpa(alerta, jpaUsuarioEntity);
-
         try{
+            JpaUsuarioEntity jpaUsuarioEntity = jpaUsuarioRepository.getReferenceById(alerta.getUsuarioId());
+            JpaAlertaEntity entity = AlertaMapper.toJpa(alerta, jpaUsuarioEntity);
             JpaAlertaEntity savedEntity = jpaAlertaRepository.save(entity);
             logger.info("Alerta criado com sucesso para o usuário com id " + alerta.getUsuarioId());
             return AlertaMapper.entityToDomain(savedEntity);

@@ -3,13 +3,9 @@ package com.worksafe.api.infrastructure.api.rest;
 import com.worksafe.api.interfaces.controller.RecomendacaoController;
 import com.worksafe.api.interfaces.dto.input.RecomendacaoRequest;
 import com.worksafe.api.interfaces.dto.output.RecomendacaoResponse;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -35,7 +31,7 @@ public class RecomendacaoRestController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RecomendacaoResponse> buscarPorId(Long id) {
+    public ResponseEntity<RecomendacaoResponse> buscarPorId(@PathVariable Long id) {
         final RecomendacaoResponse response = recomendacaoController.buscarPorId(id);
         return ResponseEntity.ok(response);
     }

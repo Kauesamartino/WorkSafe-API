@@ -1,6 +1,6 @@
 package com.worksafe.api.interfaces.dto.output;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public record RecomendacaoResponse(
         Long id,
@@ -8,6 +8,6 @@ public record RecomendacaoResponse(
         String tipoAtividade,
         String titulo,
         String descricao,
-        LocalDate createdAt
+        LocalDateTime createdAt
 ) {
 }

@@ -60,10 +60,9 @@ public class AutoavaliacaoRepositoryAdapter implements AutoavaliacaoRepository {
     @Override
     public Autoavaliacao save(Autoavaliacao autoavaliacao) {
         logger.info("Salvando autoavaliação para o usuário com ID: " + autoavaliacao.getUsuarioId());
-        JpaUsuarioEntity jpaUsuarioEntity = jpaUsuarioRepository.getReferenceById(autoavaliacao.getUsuarioId());
-        JpaAutoavaliacaoEntity entity = AutoavaliacaoMapper.toJpa(autoavaliacao, jpaUsuarioEntity);
-
         try {
+            JpaUsuarioEntity jpaUsuarioEntity = jpaUsuarioRepository.getReferenceById(autoavaliacao.getUsuarioId());
+            JpaAutoavaliacaoEntity entity = AutoavaliacaoMapper.toJpa(autoavaliacao, jpaUsuarioEntity);
             JpaAutoavaliacaoEntity savedEntity = jpaAutoavaliacaoRepository.save(entity);
             logger.info("Autoavaliação salva com sucesso para o usuário com ID: " + autoavaliacao.getUsuarioId());
             return AutoavaliacaoMapper.entityToDomain(savedEntity);

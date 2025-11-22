@@ -44,10 +44,9 @@ public class WearableDataRepositoryAdapter implements WearableDataRepository {
     @Override
     public WearableData save(WearableData wearableData) {
         logger.info("Iniciando persistencia de WearableData");
-        JpaUsuarioEntity jpaUsuarioEntity = jpaUsuarioRepository.getReferenceById(wearableData.getUsuarioId());
-        JpaWearableDataEntity entity = WearableMapper.domainToEntity(wearableData, jpaUsuarioEntity);
-
         try {
+            JpaUsuarioEntity jpaUsuarioEntity = jpaUsuarioRepository.getReferenceById(wearableData.getUsuarioId());
+            JpaWearableDataEntity entity = WearableMapper.domainToEntity(wearableData, jpaUsuarioEntity);
             JpaWearableDataEntity savedEntity = jpaWearableDataRepository.save(entity);
             logger.info("WearableData persistido com sucesso para o usuário com id " + wearableData.getUsuarioId());
             return WearableMapper.entityToDomain(savedEntity);

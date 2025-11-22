@@ -60,6 +60,7 @@ public class RecomendacaoRepositoryAdapter implements RecomendacaoRepository {
         logger.info("Salvando recomendacao: " + recomendacao);
         JpaUsuarioEntity jpaUsuarioEntity = jpaUsuarioRepository.getReferenceById(recomendacao.getUsuarioId());
         JpaRecomendacaoEntity entity = RecomendacaoMapper.toJpa(recomendacao, jpaUsuarioEntity);
+
         try {
             JpaRecomendacaoEntity savedEntity = jpaRecomendacaoRepository.save(entity);
             logger.info("Recomendacao salva com sucesso: " + savedEntity);

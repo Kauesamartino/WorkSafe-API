@@ -51,7 +51,7 @@ public class SecurityConfig {
                                 "/v3/api-docs.yaml"
                         ).permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/usuarios", "/api/alertas", "/api/wearable-data").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/recomendacoes").hasAnyRole("ADMIN", "DOCTOR")
+                        .requestMatchers(HttpMethod.POST, "/api/recomendacoes").hasAnyRole("ADMIN", "DOCTOR", "USER")
                         .requestMatchers(HttpMethod.POST, "/api/autoavaliacoes").hasAnyRole("ADMIN", "USER")
                         .requestMatchers(
                                 HttpMethod.GET,
@@ -61,15 +61,15 @@ public class SecurityConfig {
                                 "/api/recomendacoes/**",
                                 "/api/autoavaliacoes/**"
                                 ).hasAnyRole("USER", "ADMIN")
-                        .requestMatchers(HttpMethod.PATCH, "/api/usuarios").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PATCH, "/api/usuarios/**").hasAnyRole("ADMIN", "USER")
                         .requestMatchers(
                                 HttpMethod.DELETE,
-                                "/api/usuarios/{cpf}",
-                                "/api/wearable-data/{id}",
-                                "/api/alertas/{id}",
-                                "/api/recomendacoes/{id}",
-                                "/api/autoavaliacoes/{id}"
-                                ).hasRole("ADMIN")
+                                "/api/usuarios/**",
+                                "/api/wearable-data/**",
+                                "/api/alertas/**",
+                                "/api/recomendacoes/**",
+                                "/api/autoavaliacoes/**"
+                                ).hasAnyRole("ADMIN", "USER")
                         .requestMatchers("/error").permitAll()
                         .anyRequest().authenticated()
                 )

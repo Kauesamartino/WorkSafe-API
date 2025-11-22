@@ -32,16 +32,6 @@ public class JpaAlertaEntity {
     public JpaAlertaEntity() {
     }
 
-    public JpaAlertaEntity(Long id, JpaUsuarioEntity jpaUsuarioEntity, TipoAlerta tipoAlerta, String descricao, Severidade severidade, LocalDateTime data, Boolean resolvido) {
-        this.id = id;
-        this.jpaUsuarioEntity = jpaUsuarioEntity;
-        this.tipoAlerta = tipoAlerta;
-        this.descricao = descricao;
-        this.severidade = severidade;
-        this.data = data;
-        this.resolvido = resolvido;
-    }
-
     public JpaAlertaEntity(JpaUsuarioEntity jpaUsuarioEntity, TipoAlerta tipoAlerta, String descricao, Severidade severidade, LocalDateTime data, Boolean resolvido) {
         this.jpaUsuarioEntity = jpaUsuarioEntity;
         this.tipoAlerta = tipoAlerta;

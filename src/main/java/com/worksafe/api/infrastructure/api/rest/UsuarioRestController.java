@@ -37,7 +37,7 @@ public class UsuarioRestController {
     @GetMapping
     public ResponseEntity<Page<UsuarioDetailsResponse>> listarTodosUsuarios(
             @RequestParam(name = "pageSize", required = false, defaultValue = "20") Integer pageSize,
-            @RequestParam(name = "pageNumber", required = false, defaultValue = "0) ") Integer pageNumber
+            @RequestParam(name = "pageNumber", required = false, defaultValue = "0") Integer pageNumber
     ){
         final Page<UsuarioDetailsResponse> page = usuarioController.listarTodosUsuarios(pageSize, pageNumber);
         return ResponseEntity.ok(page);

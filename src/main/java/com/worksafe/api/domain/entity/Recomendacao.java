@@ -1,6 +1,5 @@
 package com.worksafe.api.domain.entity;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Recomendacao {
@@ -15,7 +14,7 @@ public class Recomendacao {
 
     private String descricao;
 
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
     private Boolean consumido;
 
@@ -24,11 +23,11 @@ public class Recomendacao {
         this.tipoAtividade = tipoAtividade;
         this.titulo = titulo;
         this.descricao = descricao;
-        this.createdAt = LocalDate.now();
+        this.createdAt = LocalDateTime.now();
         this.consumido = false;
     }
 
-    public Recomendacao(Long id, Long usuarioId, String tipoAtividade, String titulo, String descricao, LocalDate createdAt, Boolean consumido) {
+    public Recomendacao(Long id, Long usuarioId, String tipoAtividade, String titulo, String descricao, LocalDateTime createdAt, Boolean consumido) {
         this.id = id;
         this.usuarioId = usuarioId;
         this.tipoAtividade = tipoAtividade;
@@ -82,7 +81,7 @@ public class Recomendacao {
         }
     }
 
-    public void setCreatedAt(LocalDate createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -110,7 +109,7 @@ public class Recomendacao {
         return descricao;
     }
 
-    public LocalDate getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 

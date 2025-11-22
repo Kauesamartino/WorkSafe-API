@@ -38,9 +38,9 @@ public class UsuarioRepositoryAdapter implements UsuarioRepository {
     @Override
     public Usuario save(Usuario usuario) {
         logger.info("Salvando usuário com CPF: " + usuario.getCpf());
-        JpaUsuarioEntity jpaUsuarioEntity = UsuarioMapper.toJpa(usuario);
 
         try{
+            JpaUsuarioEntity jpaUsuarioEntity = UsuarioMapper.toJpa(usuario);
             Credenciais credenciais = new Credenciais(
                     usuario.getCredenciais().getUsername(),
                     usuario.getCredenciais().getPassword(),

@@ -3,6 +3,7 @@ package com.worksafe.api.infrastructure.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "recomendacao")
@@ -21,34 +22,20 @@ public class JpaRecomendacaoEntity {
 
     private String descricao;
 
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
     private Boolean consumido;
 
     public JpaRecomendacaoEntity() {
     }
 
-    public JpaRecomendacaoEntity(JpaUsuarioEntity jpaUsuarioEntity, String tipoAtividade, String titulo, String descricao, LocalDate createdAt, Boolean consumido) {
+    public JpaRecomendacaoEntity(JpaUsuarioEntity jpaUsuarioEntity, String tipoAtividade, String titulo, String descricao, LocalDateTime createdAt, Boolean consumido) {
         this.jpaUsuarioEntity = jpaUsuarioEntity;
         this.tipoAtividade = tipoAtividade;
         this.titulo = titulo;
         this.descricao = descricao;
         this.createdAt = createdAt;
         this.consumido = consumido;
-    }
-
-    public JpaRecomendacaoEntity(Long id, JpaUsuarioEntity jpaUsuarioEntity, String tipoAtividade, String titulo, String descricao, LocalDate createdAt, Boolean consumido) {
-        this.id = id;
-        this.jpaUsuarioEntity = jpaUsuarioEntity;
-        this.tipoAtividade = tipoAtividade;
-        this.titulo = titulo;
-        this.descricao = descricao;
-        this.createdAt = createdAt;
-        this.consumido = consumido;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public JpaUsuarioEntity getJpaUsuarioEntity() {
@@ -67,11 +54,15 @@ public class JpaRecomendacaoEntity {
         return descricao;
     }
 
-    public LocalDate getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
     public Boolean getConsumido() {
         return consumido;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
