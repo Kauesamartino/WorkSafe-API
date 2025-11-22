@@ -3,6 +3,7 @@ package com.worksafe.api.infrastructure.api.rest;
 import com.worksafe.api.interfaces.controller.WearableDataController;
 import com.worksafe.api.interfaces.dto.input.WearableRequest;
 import com.worksafe.api.interfaces.dto.output.WearableResponse;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -25,7 +26,7 @@ public class WearableDataRestController {
     }
 
     @PostMapping
-    public ResponseEntity<WearableResponse> create(WearableRequest request, UriComponentsBuilder uriComponentsBuilder) {
+    public ResponseEntity<WearableResponse> create(@Valid @RequestBody WearableRequest request, UriComponentsBuilder uriComponentsBuilder) {
         final WearableResponse response = wearableDataController.create(request);
         URI uri = uriComponentsBuilder.path("/wearable-data/{id}")
                 .buildAndExpand(response.id())
