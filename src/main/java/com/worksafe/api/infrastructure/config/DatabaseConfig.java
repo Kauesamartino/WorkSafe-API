@@ -1,10 +1,7 @@
 package com.worksafe.api.infrastructure.config;
 
 import com.worksafe.api.domain.logging.Logger;
-import com.worksafe.api.domain.repository.AlertaRepository;
-import com.worksafe.api.domain.repository.RecomendacaoRepository;
-import com.worksafe.api.domain.repository.RoleRepository;
-import com.worksafe.api.domain.repository.UsuarioRepository;
+import com.worksafe.api.domain.repository.*;
 import com.worksafe.api.infrastructure.logging.LoggerFactory;
 import com.worksafe.api.infrastructure.persistance.*;
 import com.worksafe.api.infrastructure.repository.*;
@@ -39,5 +36,11 @@ public class DatabaseConfig {
     public RecomendacaoRepository recomendacaoRepository(JpaRecomendacaoRepository jpaRecomendacaoRepository, JpaUsuarioRepository jpaUsuarioRepository) {
         final Logger logger = LoggerFactory.getLogger(RecomendacaoRepositoryAdapter.class);
         return new RecomendacaoRepositoryAdapter(jpaRecomendacaoRepository, jpaUsuarioRepository, logger);
+    }
+
+    @Bean
+    public AutoavaliacaoRepository autoavaliacaoRepository(JpaAutoavaliacaoRepository jpaAutoavaliacaoRepository, JpaUsuarioRepository jpaUsuarioRepository) {
+        final Logger logger = LoggerFactory.getLogger(AutoavaliacaoRepositoryAdapter.class);
+        return new AutoavaliacaoRepositoryAdapter(jpaAutoavaliacaoRepository, jpaUsuarioRepository, logger);
     }
 }

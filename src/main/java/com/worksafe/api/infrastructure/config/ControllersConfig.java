@@ -1,5 +1,8 @@
 package com.worksafe.api.infrastructure.config;
 
+import com.worksafe.api.application.usecase.autoavaliacao.BuscarAutoavaliacaoPorIdUseCase;
+import com.worksafe.api.application.usecase.autoavaliacao.CreateAutoavaliacaoUseCase;
+import com.worksafe.api.application.usecase.autoavaliacao.ListarTodasAutoavaliacoesUseCase;
 import com.worksafe.api.application.usecase.recomendacao.ListarTodasRecomendacoesUseCase;
 import com.worksafe.api.application.usecase.alerta.BuscarAlertaPorIdUseCase;
 import com.worksafe.api.application.usecase.alerta.CriarAlertaUseCase;
@@ -53,5 +56,16 @@ public class ControllersConfig {
         return new RecomendacaoControllerImpl(
                 createRecomendacaoUseCase, buscarRecomendacaoPorIdUseCase,
                 listarTodasRecomendacoesUseCase);
+    }
+
+    @Bean
+    public AutoavaliacaoController autoavaliacaoController(
+            CreateAutoavaliacaoUseCase createAutoavaliacaoUseCase, BuscarAutoavaliacaoPorIdUseCase buscarAutoavaliacaoPorIdUseCase,
+            ListarTodasAutoavaliacoesUseCase listarTodasAutoavaliacoesUseCase, BuscarUsuarioPorIdUseCase buscarUsuarioPorIdUseCase
+    ) {
+        return new AutoavaliacaoControllerImpl(
+                createAutoavaliacaoUseCase, buscarAutoavaliacaoPorIdUseCase,
+                listarTodasAutoavaliacoesUseCase, buscarUsuarioPorIdUseCase
+        );
     }
 }
