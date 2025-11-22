@@ -43,4 +43,28 @@ public class JpaWearableDataEntity {
         this.passos = passos;
         this.sonoTotal = sonoTotal;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public JpaUsuarioEntity getJpaUsuarioEntity() {
+        return jpaUsuarioEntity;
+    }
+
+    public LocalDateTime getData() {
+        return data;
+    }
+
+    public Double getBatimentosMedia() {
+        return batimentosMedia;
+    }
+
+    public Integer getPassos() {
+        return passos;
+    }
+
+    public Double getSonoTotal() {
+        return sonoTotal;
+    }
 }
