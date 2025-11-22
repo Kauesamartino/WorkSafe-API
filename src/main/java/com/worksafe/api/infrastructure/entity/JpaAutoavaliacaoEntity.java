@@ -50,4 +50,36 @@ public class JpaAutoavaliacaoEntity {
         this.qualidadeSono = qualidadeSono;
         this.comentarios = comentarios;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public JpaUsuarioEntity getJpaUsuarioEntity() {
+        return jpaUsuarioEntity;
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public Integer getEstresse() {
+        return estresse;
+    }
+
+    public Integer getHumor() {
+        return humor;
+    }
+
+    public Integer getEnergia() {
+        return energia;
+    }
+
+    public Integer getQualidadeSono() {
+        return qualidadeSono;
+    }
+
+    public String getComentarios() {
+        return comentarios;
+    }
 }
