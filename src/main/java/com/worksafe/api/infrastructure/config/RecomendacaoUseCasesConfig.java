@@ -1,7 +1,6 @@
 package com.worksafe.api.infrastructure.config;
 
 import com.worksafe.api.application.usecase.recomendacao.*;
-import com.worksafe.api.application.usecase.usuario.BuscarUsuarioPorIdUseCase;
 import com.worksafe.api.domain.repository.RecomendacaoRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +21,7 @@ public class RecomendacaoUseCasesConfig {
     }
 
     @Bean
-    public BuscarRecomendacaoPorIdUseCase buscarUsuarioPorIdUseCase(){
+    public BuscarRecomendacaoPorIdUseCase buscarRecomendacaoPorIdUseCase(){
         return new BuscarRecomendacaoPorIdUseCaseImpl(recomendacaoRepository);
     }
 

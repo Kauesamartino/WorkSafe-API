@@ -5,6 +5,7 @@ import com.worksafe.api.domain.repository.*;
 import com.worksafe.api.infrastructure.logging.LoggerFactory;
 import com.worksafe.api.infrastructure.persistance.*;
 import com.worksafe.api.infrastructure.repository.*;
+import com.worksafe.api.infrastructure.services.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -48,5 +49,11 @@ public class DatabaseConfig {
     public WearableDataRepository wearableDataRepository(JpaWearableDataRepository jpaWearableDataRepository, JpaUsuarioRepository jpaUsuarioRepository) {
         final Logger logger = LoggerFactory.getLogger(WearableDataRepositoryAdapter.class);
         return new WearableDataRepositoryAdapter(jpaWearableDataRepository, jpaUsuarioRepository, logger);
+    }
+
+    @Bean
+    public CredenciaisRepository credenciaisRepository(JpaCredenciaisRepository jpaCredenciaisRepository) {
+        final Logger logger = LoggerFactory.getLogger(CustomUserDetailsService.class);
+        return new CredenciaisRepositoryAdapter(jpaCredenciaisRepository, logger);
     }
 }
