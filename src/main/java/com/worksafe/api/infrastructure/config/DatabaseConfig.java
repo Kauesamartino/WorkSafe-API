@@ -43,4 +43,10 @@ public class DatabaseConfig {
         final Logger logger = LoggerFactory.getLogger(AutoavaliacaoRepositoryAdapter.class);
         return new AutoavaliacaoRepositoryAdapter(jpaAutoavaliacaoRepository, jpaUsuarioRepository, logger);
     }
+
+    @Bean
+    public WearableDataRepository wearableDataRepository(JpaWearableDataRepository jpaWearableDataRepository, JpaUsuarioRepository jpaUsuarioRepository) {
+        final Logger logger = LoggerFactory.getLogger(WearableDataRepositoryAdapter.class);
+        return new WearableDataRepositoryAdapter(jpaWearableDataRepository, jpaUsuarioRepository, logger);
+    }
 }

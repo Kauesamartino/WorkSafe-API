@@ -10,6 +10,9 @@ import com.worksafe.api.application.usecase.alerta.ListarTodosAlertasUseCase;
 import com.worksafe.api.application.usecase.recomendacao.BuscarRecomendacaoPorIdUseCase;
 import com.worksafe.api.application.usecase.recomendacao.CreateRecomendacaoUseCase;
 import com.worksafe.api.application.usecase.usuario.*;
+import com.worksafe.api.application.usecase.wearable.data.BuscarWearableDataByIdUseCase;
+import com.worksafe.api.application.usecase.wearable.data.CreateWearableDataUseCase;
+import com.worksafe.api.application.usecase.wearable.data.ListarWearableDataUseCase;
 import com.worksafe.api.infrastructure.security.JwtUtil;
 import com.worksafe.api.interfaces.controller.*;
 import org.springframework.context.annotation.Bean;
@@ -66,6 +69,17 @@ public class ControllersConfig {
         return new AutoavaliacaoControllerImpl(
                 createAutoavaliacaoUseCase, buscarAutoavaliacaoPorIdUseCase,
                 listarTodasAutoavaliacoesUseCase, buscarUsuarioPorIdUseCase
+        );
+    }
+
+    @Bean
+    public WearableDataController wearableDataController(
+            CreateWearableDataUseCase createWearableDataUseCase, BuscarUsuarioPorIdUseCase buscarUsuarioPorIdUseCase,
+            BuscarWearableDataByIdUseCase buscarWearableDataByIdUseCase, ListarWearableDataUseCase listarWearableDataUseCase
+    ){
+        return new WearableDataControllerImpl(
+                createWearableDataUseCase, buscarWearableDataByIdUseCase,
+                listarWearableDataUseCase, buscarUsuarioPorIdUseCase
         );
     }
 }
