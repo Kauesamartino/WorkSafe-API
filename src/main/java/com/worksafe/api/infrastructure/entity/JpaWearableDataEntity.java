@@ -27,15 +27,6 @@ public class JpaWearableDataEntity {
     public JpaWearableDataEntity() {
     }
 
-    public JpaWearableDataEntity(Long id, JpaUsuarioEntity jpaUsuarioEntity, LocalDateTime data, Double batimentosMedia, Integer passos, Double sonoTotal) {
-        this.id = id;
-        this.jpaUsuarioEntity = jpaUsuarioEntity;
-        this.data = data;
-        this.batimentosMedia = batimentosMedia;
-        this.passos = passos;
-        this.sonoTotal = sonoTotal;
-    }
-
     public JpaWearableDataEntity(JpaUsuarioEntity jpaUsuarioEntity, LocalDateTime data, Double batimentosMedia, Integer passos, Double sonoTotal) {
         this.jpaUsuarioEntity = jpaUsuarioEntity;
         this.data = data;
