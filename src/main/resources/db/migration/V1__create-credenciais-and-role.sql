@@ -25,3 +25,4 @@ CREATE TABLE credenciais_role (
 
 insert into role (name, description) values ('ROLE_ADMIN', 'Administrador do sistema com todas as permissões');
 insert into role (name, description) values ('ROLE_USER', 'Usuário padrão com permissões limitadas');
+insert into role (name, description) values ('ROLE_DOCTOR', 'Médico com permissões para acessar dados de pacientes');

@@ -5,6 +5,8 @@ CREATE TABLE usuario (
                          cpf VARCHAR(11) UNIQUE NOT NULL,
                          email VARCHAR(150) UNIQUE NOT NULL,
                          telefone VARCHAR(20),
+                         cargo VARCHAR(100),
+                         departamento VARCHAR(100),
                          data_nascimento DATE,
                          created_at DATE,
                          sexo VARCHAR(10),
