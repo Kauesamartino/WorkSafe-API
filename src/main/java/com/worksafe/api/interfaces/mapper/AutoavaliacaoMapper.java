@@ -43,7 +43,7 @@ public class AutoavaliacaoMapper {
         );
     }
 
-    public static Autoavaliacao domainToEntity(JpaAutoavaliacaoEntity savedEntity) {
+    public static Autoavaliacao entityToDomain(JpaAutoavaliacaoEntity savedEntity) {
         return new Autoavaliacao(
                 savedEntity.getId(),
                 savedEntity.getJpaUsuarioEntity().getId(),
