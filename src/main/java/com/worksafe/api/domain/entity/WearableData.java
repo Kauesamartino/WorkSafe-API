@@ -16,8 +16,6 @@ public class WearableData {
 
     private Double sonoTotal;
 
-    private String rawData;
-
     public void setUsuarioId(Long usuarioId) {
         isUsuarioIdValido(usuarioId);
         this.usuarioId = usuarioId;
@@ -66,10 +64,6 @@ public class WearableData {
         }
     }
 
-    public void setRawData(String rawData) {
-        this.rawData = rawData;
-    }
-
     public Long getId() {
         return id;
     }
@@ -92,9 +86,5 @@ public class WearableData {
 
     public Double getSonoTotal() {
         return sonoTotal;
-    }
-
-    public String getRawData() {
-        return rawData;
     }
 }
