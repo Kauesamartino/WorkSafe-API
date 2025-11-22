@@ -41,6 +41,7 @@ public class AutoavaliacaoRestController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping
     public ResponseEntity<List<AutoavaliacaoResponse>> listarAvaliacoes() {
         final List<AutoavaliacaoResponse> response = autoavaliacaoController.listarAvaliacoes();
         return ResponseEntity.ok(response);

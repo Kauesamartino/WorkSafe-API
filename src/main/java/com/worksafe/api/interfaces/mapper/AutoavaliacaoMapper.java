@@ -6,7 +6,7 @@ import com.worksafe.api.infrastructure.entity.JpaUsuarioEntity;
 import com.worksafe.api.interfaces.dto.input.AutoavaliacaoRequest;
 import com.worksafe.api.interfaces.dto.output.AutoavaliacaoResponse;
 
-public class AutoavaliacaoMapper {
+public final class AutoavaliacaoMapper {
     public static Autoavaliacao toModel(AutoavaliacaoRequest request) {
         return new Autoavaliacao(
                 request.usuarioId(),

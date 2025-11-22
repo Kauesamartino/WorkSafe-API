@@ -6,7 +6,7 @@ import com.worksafe.api.infrastructure.entity.JpaWearableDataEntity;
 import com.worksafe.api.interfaces.dto.input.WearableRequest;
 import com.worksafe.api.interfaces.dto.output.WearableResponse;
 
-public class WearableMapper {
+public final class WearableMapper {
     public static WearableData toModel(WearableRequest request) {
         return new WearableData(
                 request.usuarioId(),
