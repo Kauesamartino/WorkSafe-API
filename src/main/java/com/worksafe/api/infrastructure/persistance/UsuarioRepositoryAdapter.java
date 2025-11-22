@@ -91,7 +91,7 @@ public class UsuarioRepositoryAdapter implements UsuarioRepository {
     public Page<Usuario> findAllByAtivoTrue(Pageable pageable) {
         logger.info("Buscando todos os usuarios ativos");
         try{
-            Page<JpaUsuarioEntity> usuarios = jpaUsuarioRepository.findAllByAtivoTrue();
+            Page<JpaUsuarioEntity> usuarios = jpaUsuarioRepository.findAllByAtivoTrue(pageable);
             logger.info("Usuarios ativos encontrados: " + usuarios.getTotalElements());
             return usuarios.map(UsuarioMapper::entityToDomain);
         } catch (DataAccessException e) {
