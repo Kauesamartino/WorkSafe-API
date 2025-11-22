@@ -23,22 +23,22 @@ public class Autoavaliacao {
     public Autoavaliacao(Long usuarioId, Integer estresse, Integer humor, Integer energia, Integer qualidadeSono, String comentarios) {
         this.usuarioId = usuarioId;
         this.data = LocalDate.now();
-        this.estresse = estresse;
-        this.humor = humor;
-        this.energia = energia;
-        this.qualidadeSono = qualidadeSono;
-        this.comentarios = comentarios;
+        setEstresse(estresse);
+        setHumor(humor);
+        setEnergia(energia);
+        setQualidadeSono(qualidadeSono);
+        setComentarios(comentarios);
     }
 
     public Autoavaliacao(Long id, Long usuarioId, LocalDate data, Integer estresse, Integer humor, Integer energia, Integer qualidadeSono, String comentarios) {
         this.id = id;
         this.usuarioId = usuarioId;
-        this.data = data;
-        this.estresse = estresse;
-        this.humor = humor;
-        this.energia = energia;
-        this.qualidadeSono = qualidadeSono;
-        this.comentarios = comentarios;
+        setData(data);
+        setEstresse(estresse);
+        setHumor(humor);
+        setEnergia(energia);
+        setQualidadeSono(qualidadeSono);
+        setComentarios(comentarios);
     }
 
     public void setUsuarioId(Long usuarioId) {

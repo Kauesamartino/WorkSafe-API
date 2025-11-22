@@ -19,18 +19,18 @@ public class WearableData {
     public WearableData(Long usuarioId, Double batimentosMedia, Integer passos, Double sonoTotal) {
         this.usuarioId = usuarioId;
         this.data = LocalDateTime.now().minusHours(3);
-        this.batimentosMedia = batimentosMedia;
-        this.passos = passos;
-        this.sonoTotal = sonoTotal;
+        setBatimentosMedia(batimentosMedia);
+        setPassos(passos);
+        setSonoTotal(sonoTotal);
     }
 
     public WearableData(Long id, Long usuarioId, LocalDateTime data, Double batimentosMedia, Integer passos, Double sonoTotal) {
         this.id = id;
         this.usuarioId = usuarioId;
         this.data = data;
-        this.batimentosMedia = batimentosMedia;
-        this.passos = passos;
-        this.sonoTotal = sonoTotal;
+        setBatimentosMedia(batimentosMedia);
+        setPassos(passos);
+        setSonoTotal(sonoTotal);
     }
 
     public void setUsuarioId(Long usuarioId) {
