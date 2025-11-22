@@ -17,7 +17,7 @@ import java.util.List;
  * delega as chamadas para o controller puro.
  */
 @RestController
-@RequestMapping("/autoavaliacoes")
+@RequestMapping("/api/autoavaliacoes")
 public class AutoavaliacaoRestController {
 
     private final AutoavaliacaoController autoavaliacaoController;

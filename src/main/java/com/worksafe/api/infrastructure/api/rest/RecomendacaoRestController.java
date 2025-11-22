@@ -16,7 +16,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/recomendacoes")
+@RequestMapping("/api/recomendacoes")
 public class RecomendacaoRestController {
 
     private final RecomendacaoController recomendacaoController;

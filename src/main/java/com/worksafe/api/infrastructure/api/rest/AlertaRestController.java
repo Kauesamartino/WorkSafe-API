@@ -18,7 +18,7 @@ import java.util.List;
  * delega as chamadas para o controller puro.
  */
 @RestController
-@RequestMapping("/alertas")
+@RequestMapping("/api/alertas")
 public class AlertaRestController {
 
     private final AlertaController alertaController;

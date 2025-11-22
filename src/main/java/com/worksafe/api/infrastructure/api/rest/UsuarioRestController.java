@@ -18,7 +18,7 @@ import java.net.URI;
  * delega as chamadas para o controller puro.
  */
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/api/usuarios")
 public class UsuarioRestController {
 
     private final UsuarioController usuarioController;
