@@ -16,6 +16,14 @@ public class WearableData {
 
     private Double sonoTotal;
 
+    public WearableData(Long usuarioId, Double batimentosMedia, Integer passos, Double sonoTotal) {
+        this.usuarioId = usuarioId;
+        this.data = LocalDateTime.now().minusHours(3);
+        this.batimentosMedia = batimentosMedia;
+        this.passos = passos;
+        this.sonoTotal = sonoTotal;
+    }
+
     public void setUsuarioId(Long usuarioId) {
         isUsuarioIdValido(usuarioId);
         this.usuarioId = usuarioId;

@@ -23,27 +23,24 @@ public class JpaWearableDataEntity {
 
     private Double sonoTotal;
 
-    private String rawData;
 
     public JpaWearableDataEntity() {
     }
 
-    public JpaWearableDataEntity(Long id, JpaUsuarioEntity jpaUsuarioEntity, LocalDateTime data, Double batimentosMedia, Integer passos, Double sonoTotal, String rawData) {
+    public JpaWearableDataEntity(Long id, JpaUsuarioEntity jpaUsuarioEntity, LocalDateTime data, Double batimentosMedia, Integer passos, Double sonoTotal) {
         this.id = id;
         this.jpaUsuarioEntity = jpaUsuarioEntity;
         this.data = data;
         this.batimentosMedia = batimentosMedia;
         this.passos = passos;
         this.sonoTotal = sonoTotal;
-        this.rawData = rawData;
     }
 
-    public JpaWearableDataEntity(JpaUsuarioEntity jpaUsuarioEntity, LocalDateTime data, Double batimentosMedia, Integer passos, Double sonoTotal, String rawData) {
+    public JpaWearableDataEntity(JpaUsuarioEntity jpaUsuarioEntity, LocalDateTime data, Double batimentosMedia, Integer passos, Double sonoTotal) {
         this.jpaUsuarioEntity = jpaUsuarioEntity;
         this.data = data;
         this.batimentosMedia = batimentosMedia;
         this.passos = passos;
         this.sonoTotal = sonoTotal;
-        this.rawData = rawData;
     }
 }
