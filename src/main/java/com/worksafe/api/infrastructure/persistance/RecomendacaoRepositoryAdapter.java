@@ -1,5 +1,6 @@
 package com.worksafe.api.infrastructure.persistance;
 
+import com.worksafe.api.application.exception.EntidadeNaoEncontradaException;
 import com.worksafe.api.domain.entity.Recomendacao;
 import com.worksafe.api.domain.logging.Logger;
 import com.worksafe.api.domain.repository.RecomendacaoRepository;
@@ -45,7 +46,7 @@ public class RecomendacaoRepositoryAdapter implements RecomendacaoRepository {
         logger.info("Buscando Recomendacao por ID: " + id);
         try {
             JpaRecomendacaoEntity entity = jpaRecomendacaoRepository.findById(id)
-                    .orElseThrow(() -> new InfraestruturaException("Recomendacao não encontrada com ID: " + id));
+                    .orElseThrow(() -> new EntidadeNaoEncontradaException("Recomendacao não encontrada com ID: " + id));
             logger.info("Recomendacao encontrada: " + entity);
             return RecomendacaoMapper.toDomain(entity);
         } catch (DataAccessException e) {

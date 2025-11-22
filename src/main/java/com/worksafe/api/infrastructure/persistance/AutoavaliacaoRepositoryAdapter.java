@@ -34,7 +34,7 @@ public class AutoavaliacaoRepositoryAdapter implements AutoavaliacaoRepository {
             List<JpaAutoavaliacaoEntity> entities = jpaAutoavaliacaoRepository.findAll();
             logger.info("Autoavaliações encontradas: " + entities.size());
             return entities.stream()
-                    .map(AutoavaliacaoMapper::domainToEntity)
+                    .map(AutoavaliacaoMapper::entityToDomain)
                     .toList();
         } catch (DataAccessException e) {
             logger.error("Erro ao buscar autoavaliações", e);
@@ -50,7 +50,7 @@ public class AutoavaliacaoRepositoryAdapter implements AutoavaliacaoRepository {
             JpaAutoavaliacaoEntity entity = jpaAutoavaliacaoRepository.findById(id)
                     .orElseThrow(() -> new EntidadeNaoEncontradaException("Autoavaliação não encontrada: " + id));
             logger.info("Autoavaliação encontrada com o ID: " + id);
-            return AutoavaliacaoMapper.domainToEntity(entity);
+            return AutoavaliacaoMapper.entityToDomain(entity);
         } catch (DataAccessException e) {
             logger.error("Erro ao buscar autoavaliação com o ID: " + id, e);
             throw new InfraestruturaException("Erro ao buscar autoavaliação", e);
@@ -66,7 +66,7 @@ public class AutoavaliacaoRepositoryAdapter implements AutoavaliacaoRepository {
         try {
             JpaAutoavaliacaoEntity savedEntity = jpaAutoavaliacaoRepository.save(entity);
             logger.info("Autoavaliação salva com sucesso para o usuário com ID: " + autoavaliacao.getUsuarioId());
-            return AutoavaliacaoMapper.domainToEntity(savedEntity);
+            return AutoavaliacaoMapper.entityToDomain(savedEntity);
         } catch (DataAccessException e) {
             logger.error("Erro ao salvar autoavaliação para o usuário com ID: " + autoavaliacao.getUsuarioId(), e);
             throw new InfraestruturaException("Erro ao salvar autoavaliação", e);
