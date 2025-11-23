@@ -36,6 +36,7 @@ API WorkSafe oferece serviços para coleta, armazenamento e análise de dados re
 17. Boas Práticas Implementadas
 18. Próximos Passos / Inovação
 19. Troubleshooting
+20. Links Videos
 
 ---
 ## 1. Visão Geral
@@ -248,6 +249,10 @@ Importe `insomnia/insomnia_tests.har` no Insomnia para testar endpoints rapidame
 | Flyway falha | Script mal formatado | Validar nome Vx__desc.sql e terminar com `;` |
 | 401 Unauthorized | Token expirado ou ausente | Refazer login e incluir header Authorization |
 | Porta 8080 ocupada | Outro serviço rodando | Alterar `server.port` em properties ou encerrar serviço |
+
+## Links videos
+- [Video Apresentação WorkSafe API]()
+- [Video Demonstração Funcionalidades]()
 
 ## Licença
 Definir licença (ex: MIT) — ajustar conforme necessidade.
