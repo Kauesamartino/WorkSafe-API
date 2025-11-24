@@ -251,7 +251,7 @@ Importe `insomnia/insomnia_tests.har` no Insomnia para testar endpoints rapidame
 | Porta 8080 ocupada | Outro serviço rodando | Alterar `server.port` em properties ou encerrar serviço |
 
 ## Links videos
-- [Video Apresentação WorkSafe API]()
+- [Video Apresentação WorkSafe API](https://youtu.be/NaKaUIJXYs8)
 - [Video Demonstração Funcionalidades]()
 
 ## Licença

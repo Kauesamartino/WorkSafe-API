@@ -50,26 +50,6 @@ public class SecurityConfig {
                                 "/v3/api-docs/**",
                                 "/v3/api-docs.yaml"
                         ).permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/usuarios", "/api/alertas", "/api/wearable-data").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/recomendacoes").hasAnyRole("ADMIN", "DOCTOR", "USER")
-                        .requestMatchers(HttpMethod.POST, "/api/autoavaliacoes").hasAnyRole("ADMIN", "USER")
-                        .requestMatchers(
-                                HttpMethod.GET,
-                                "/api/usuarios/**",
-                                "/api/wearable-data/**",
-                                "/api/alertas/**",
-                                "/api/recomendacoes/**",
-                                "/api/autoavaliacoes/**"
-                                ).hasAnyRole("USER", "ADMIN")
-                        .requestMatchers(HttpMethod.PATCH, "/api/usuarios/**").hasAnyRole("ADMIN", "USER")
-                        .requestMatchers(
-                                HttpMethod.DELETE,
-                                "/api/usuarios/**",
-                                "/api/wearable-data/**",
-                                "/api/alertas/**",
-                                "/api/recomendacoes/**",
-                                "/api/autoavaliacoes/**"
-                                ).hasAnyRole("ADMIN", "USER")
                         .requestMatchers("/error").permitAll()
                         .anyRequest().authenticated()
                 )
