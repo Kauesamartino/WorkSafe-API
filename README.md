@@ -252,7 +252,7 @@ Importe `insomnia/insomnia_tests.har` no Insomnia para testar endpoints rapidame
 
 ## Links videos
 - [Video Apresentação WorkSafe API](https://youtu.be/NaKaUIJXYs8)
-- [Video Demonstração Funcionalidades]()
+- [Video Demonstração Funcionalidades](https://youtu.be/l5OqSG2VBLs)
 
 ## Licença
 Definir licença (ex: MIT) — ajustar conforme necessidade.
