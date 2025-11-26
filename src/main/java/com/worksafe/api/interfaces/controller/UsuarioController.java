@@ -54,4 +54,12 @@ public interface UsuarioController {
      * @return Objeto de resposta contendo os detalhes do usuário.
      */
     UsuarioResponse findById(Long idUser);
+
+    /**
+     * Encontra um usuário pelo seu nome de usuário.
+     *
+     * @param username Nome de usuário a ser encontrado.
+     * @return Objeto de resposta contendo os detalhes do usuário.
+     */
+    UsuarioDetailsResponse findByUsername(String username);
 }

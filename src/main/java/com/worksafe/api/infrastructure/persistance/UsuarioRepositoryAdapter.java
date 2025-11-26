@@ -141,4 +141,21 @@ public class UsuarioRepositoryAdapter implements UsuarioRepository {
             throw new InfraestruturaException("Erro ao buscar usuario por id: " + e.getMessage());
         }
     }
+
+    @Override
+    public Usuario findByUsername(String username) {
+        logger.info("Buscando usuario por username: " + username);
+        try {
+            JpaCredenciaisEntity jpaCredenciaisEntity = jpaCredenciaisRepository.findByUsername(username);
+
+            JpaUsuarioEntity jpaUsuarioEntity = jpaUsuarioRepository.findByCredenciais(jpaCredenciaisEntity)
+                    .orElseThrow(() -> new EntidadeNaoEncontradaException("Usuário não encontrado para o username: " + username));
+
+            logger.info("Usuario encontrado: " + jpaUsuarioEntity.getId() + " " + jpaUsuarioEntity.getSobrenome());
+            return UsuarioMapper.entityToDomain(jpaUsuarioEntity);
+        } catch (DataAccessException e){
+            logger.error("Erro ao buscar usuario: " + e.getMessage(), e);
+            throw new InfraestruturaException("Erro ao buscar usuario por username: " + e.getMessage());
+        }
+    }
 }

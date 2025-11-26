@@ -1,6 +1,5 @@
 package com.worksafe.api.infrastructure.api.rest;
 
-import com.worksafe.api.infrastructure.security.CustomUserDetails;
 import com.worksafe.api.interfaces.controller.UsuarioController;
 import com.worksafe.api.interfaces.dto.input.UsuarioRequest;
 import com.worksafe.api.interfaces.dto.output.UsuarioDetailsResponse;
@@ -8,8 +7,6 @@ import com.worksafe.api.interfaces.dto.output.UsuarioResponse;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -52,16 +49,17 @@ public class UsuarioRestController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/id")
-    public ResponseEntity<UsuarioResponse> findById() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
-
-        Long idUser = user.getId();
-        final UsuarioResponse response = usuarioController.findById(idUser);
+    @GetMapping("/{id}")
+    public ResponseEntity<UsuarioResponse> findById(@PathVariable Long id) {
+        final UsuarioResponse response = usuarioController.findById(id);
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/{username}")
+    public ResponseEntity<UsuarioDetailsResponse> findByUsername(@PathVariable String username) {
+        final UsuarioDetailsResponse response = usuarioController.findByUsername(username);
+        return ResponseEntity.ok(response);
+    }
     @DeleteMapping("/{cpf}")
     public ResponseEntity<Void> deleteUsuario(@PathVariable String cpf) {
         usuarioController.deleteByCpf(cpf);

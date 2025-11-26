@@ -18,13 +18,14 @@ public final class UsuarioControllerImpl implements UsuarioController {
     private final DeletarUsuarioUseCase deletarUsuarioUseCase;
     private final DesativarUsuarioUseCase desativarUsuarioUseCase;
     private final BuscarUsuarioPorIdUseCase buscarUsuarioPorIdUseCase;
+    private final BuscarUsuarioPorUsernameUseCase buscarUsuarioPorUsernameUseCase;
 
     public UsuarioControllerImpl(
             CriarUsuarioUseCase criarUsuarioUseCase,
             ListarUsuariosUseCase listarUsuariosUseCase,
             BuscarUsuarioPorCpfUseCase buscarUsuarioPorCpfUseCase,
             DeletarUsuarioUseCase deletarUsuarioUseCase,
-            DesativarUsuarioUseCase desativarUsuarioUseCase, BuscarUsuarioPorIdUseCase buscarUsuarioPorIdUseCase
+            DesativarUsuarioUseCase desativarUsuarioUseCase, BuscarUsuarioPorIdUseCase buscarUsuarioPorIdUseCase, BuscarUsuarioPorUsernameUseCase buscarUsuarioPorUsernameUseCase
     ) {
         this.criarUsuarioUseCase = criarUsuarioUseCase;
         this.listarUsuariosUseCase = listarUsuariosUseCase;
@@ -32,6 +33,7 @@ public final class UsuarioControllerImpl implements UsuarioController {
         this.deletarUsuarioUseCase = deletarUsuarioUseCase;
         this.desativarUsuarioUseCase = desativarUsuarioUseCase;
         this.buscarUsuarioPorIdUseCase = buscarUsuarioPorIdUseCase;
+        this.buscarUsuarioPorUsernameUseCase = buscarUsuarioPorUsernameUseCase;
     }
 
     @Override
@@ -68,5 +70,11 @@ public final class UsuarioControllerImpl implements UsuarioController {
     public UsuarioResponse findById(Long idUser) {
         Usuario usuario = buscarUsuarioPorIdUseCase.execute(idUser);
         return UsuarioMapper.toResponse(usuario);
+    }
+
+    @Override
+    public UsuarioDetailsResponse findByUsername(String username) {
+        Usuario usuario = buscarUsuarioPorUsernameUseCase.execute(username);
+        return UsuarioMapper.toDetailsResponse(usuario);
     }
 }

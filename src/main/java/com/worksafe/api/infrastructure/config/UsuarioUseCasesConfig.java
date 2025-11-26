@@ -46,4 +46,9 @@ public class UsuarioUseCasesConfig {
     public BuscarUsuarioPorIdUseCase buscarUsuarioPorIdUseCase(){
         return new BuscarUsuarioPorIdUseCaseImpl(usuarioRepository);
     }
+
+    @Bean
+    public BuscarUsuarioPorUsernameUseCase buscarUsuarioPorUsernameUseCase(){
+        return new BuscarUsuarioPorUsernameUseCaseImpl(usuarioRepository);
+    }
 }
