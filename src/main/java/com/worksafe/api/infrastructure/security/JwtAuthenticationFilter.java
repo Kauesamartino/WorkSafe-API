@@ -37,14 +37,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String jwt = extractJwtFromRequest(request);
 
         if (StringUtils.hasText(jwt) && jwtUtil.validateToken(jwt)) {
+
             String username = jwtUtil.extractUsername(jwt);
-            List<SimpleGrantedAuthority> roles = jwtUtil.extractRole(jwt);
 
-            // usa a role do token
-            UserDetails userDetails = new CustomUserDetails(username, null, roles);
-
-            // usa a role que ta no banco
-            // UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
             if (jwtUtil.validateToken(jwt, userDetails)) {
                 UsernamePasswordAuthenticationToken authentication =
@@ -64,6 +60,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         filterChain.doFilter(request, response);
     }
+
 
     private String extractJwtFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");

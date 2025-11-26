@@ -14,7 +14,7 @@ public final class ListarTodasRecomendacoesUseCaseImpl implements ListarTodasRec
     }
 
     @Override
-    public List<Recomendacao> execute() {
-        return recomendacaoRepository.findAll();
+    public List<Recomendacao> execute(Long idUser) {
+        return recomendacaoRepository.findAll(idUser);
     }
 }

@@ -13,7 +13,7 @@ public interface AutoavaliacaoController {
      * @param request A requisição contendo os dados da autoavaliação.
      * @return A resposta contendo os detalhes da autoavaliação criada.
      */
-    AutoavaliacaoResponse create(@Valid AutoavaliacaoRequest request);
+    AutoavaliacaoResponse create(@Valid AutoavaliacaoRequest request, Long idUser);
 
     /**
      * Busca uma autoavaliação pelo seu ID.
@@ -28,5 +28,5 @@ public interface AutoavaliacaoController {
      *
      * @return Uma lista de respostas contendo os detalhes de todas as autoavaliações.
      */
-    List<AutoavaliacaoResponse> listarAvaliacoes();
+    List<AutoavaliacaoResponse> listarAvaliacoes(Long idUser);
 }

@@ -6,5 +6,5 @@ import com.worksafe.api.domain.entity.Autoavaliacao;
 import java.util.List;
 
 public interface ListarTodasAutoavaliacoesUseCase {
-    List<Autoavaliacao> execute();
+    List<Autoavaliacao> execute(Long idUser);
 }

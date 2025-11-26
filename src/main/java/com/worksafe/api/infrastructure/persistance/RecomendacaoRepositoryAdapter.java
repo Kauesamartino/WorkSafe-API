@@ -27,10 +27,11 @@ public class RecomendacaoRepositoryAdapter implements RecomendacaoRepository {
     }
 
     @Override
-    public List<Recomendacao> findAll() {
+    public List<Recomendacao> findAll(Long idUser) {
         logger.info("Buscando todas as recomendacoes");
+        JpaUsuarioEntity jpaUsuarioEntity = jpaUsuarioRepository.getReferenceById(idUser);
         try {
-            List<JpaRecomendacaoEntity> entities = jpaRecomendacaoRepository.findAll();
+            List<JpaRecomendacaoEntity> entities = jpaRecomendacaoRepository.findAllByJpaUsuarioEntity(jpaUsuarioEntity);
             logger.info("Recomendacoes encontradas: " + entities.size());
             return entities.stream()
                     .map(RecomendacaoMapper::toDomain)

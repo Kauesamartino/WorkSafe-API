@@ -25,8 +25,8 @@ public final class AutoavaliacaoControllerImpl implements  AutoavaliacaoControll
     }
 
     @Override
-    public AutoavaliacaoResponse create(AutoavaliacaoRequest request) {
-        Autoavaliacao autoavaliacao = AutoavaliacaoMapper.toModel(request);
+    public AutoavaliacaoResponse create(AutoavaliacaoRequest request, Long idUser) {
+        Autoavaliacao autoavaliacao = AutoavaliacaoMapper.toModel(request, idUser);
         Autoavaliacao savedAutoavaliacao = createAutoavaliacaoUseCase.execute(autoavaliacao);
         Usuario usuario = buscarUsuarioPorIdUseCase.execute(savedAutoavaliacao.getUsuarioId());
         return AutoavaliacaoMapper.toResponse(savedAutoavaliacao, usuario.getNome());
@@ -40,8 +40,8 @@ public final class AutoavaliacaoControllerImpl implements  AutoavaliacaoControll
     }
 
     @Override
-    public List<AutoavaliacaoResponse> listarAvaliacoes() {
-        return listarTodasAutoavaliacoesUseCase.execute()
+    public List<AutoavaliacaoResponse> listarAvaliacoes(Long idUser) {
+        return listarTodasAutoavaliacoesUseCase.execute(idUser)
                 .stream()
                 .map(autoavaliacao -> {
                     Usuario usuario = buscarUsuarioPorIdUseCase.execute(autoavaliacao.getUsuarioId());

@@ -127,4 +127,10 @@ public class Credenciais implements UserDetails {
     public void adicionarRole(Role roleUser) {
         this.roles.add(roleUser);
     }
+
+    public Long getId() {
+        return id;
+    }
+
+
 }

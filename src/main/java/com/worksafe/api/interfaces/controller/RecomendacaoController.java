@@ -13,7 +13,7 @@ public interface RecomendacaoController {
      * @param request A requisição contendo os dados da recomendação a ser criada.
      * @return A resposta contendo os detalhes da recomendação criada.
      */
-    RecomendacaoResponse create(@Valid RecomendacaoRequest request);
+    RecomendacaoResponse create(@Valid RecomendacaoRequest request, Long idUser);
 
     /**
      * Busca uma recomendação pelo seu ID.
@@ -28,5 +28,5 @@ public interface RecomendacaoController {
      *
      * @return Uma lista de respostas contendo os detalhes de todas as recomendações.
      */
-    List<RecomendacaoResponse> listarTodasRecomendacoes();
+    List<RecomendacaoResponse> listarTodasRecomendacoes(Long idUser);
 }

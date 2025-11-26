@@ -7,9 +7,9 @@ import com.worksafe.api.interfaces.dto.input.RecomendacaoRequest;
 import com.worksafe.api.interfaces.dto.output.RecomendacaoResponse;
 
 public final class RecomendacaoMapper {
-    public static Recomendacao toModel(RecomendacaoRequest request) {
+    public static Recomendacao toModel(RecomendacaoRequest request, Long idUser) {
         return new Recomendacao(
-                request.usuarioId(),
+                idUser,
                 request.tipoAtividade(),
                 request.titulo(),
                 request.descricao()

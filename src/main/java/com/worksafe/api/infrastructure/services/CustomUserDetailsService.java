@@ -1,6 +1,9 @@
 package com.worksafe.api.infrastructure.services;
 
+import com.worksafe.api.domain.entity.Credenciais;
 import com.worksafe.api.domain.repository.CredenciaisRepository;
+import com.worksafe.api.infrastructure.security.CustomUserDetails;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,7 +22,18 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return credenciaisRepository.findByUsernameWithRoles(username)
+
+        Credenciais credenciais = credenciaisRepository.findByUsernameWithRoles(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado: " + username));
+
+        return new CustomUserDetails(
+                credenciais.getId(),
+                credenciais.getUsername(),
+                credenciais.getPassword(),
+                credenciais.getRoles().stream()
+                        .map(role -> new SimpleGrantedAuthority(role.getName()))
+                        .toList()
+        );
     }
 }
+

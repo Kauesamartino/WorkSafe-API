@@ -5,7 +5,7 @@ import com.worksafe.api.domain.entity.Autoavaliacao;
 import java.util.List;
 
 public interface AutoavaliacaoRepository {
-    List<Autoavaliacao> findAll();
+    List<Autoavaliacao> findAll(Long idUser);
 
     Autoavaliacao findById(Long id);
 

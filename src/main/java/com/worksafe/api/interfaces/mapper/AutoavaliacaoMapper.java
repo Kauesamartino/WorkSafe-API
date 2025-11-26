@@ -7,9 +7,9 @@ import com.worksafe.api.interfaces.dto.input.AutoavaliacaoRequest;
 import com.worksafe.api.interfaces.dto.output.AutoavaliacaoResponse;
 
 public final class AutoavaliacaoMapper {
-    public static Autoavaliacao toModel(AutoavaliacaoRequest request) {
+    public static Autoavaliacao toModel(AutoavaliacaoRequest request, Long idUser) {
         return new Autoavaliacao(
-                request.usuarioId(),
+                idUser,
                 request.estresse(),
                 request.humor(),
                 request.energia(),

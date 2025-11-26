@@ -1,10 +1,13 @@
 package com.worksafe.api.infrastructure.api.rest;
 
+import com.worksafe.api.infrastructure.security.CustomUserDetails;
 import com.worksafe.api.interfaces.controller.AutoavaliacaoController;
 import com.worksafe.api.interfaces.dto.input.AutoavaliacaoRequest;
 import com.worksafe.api.interfaces.dto.output.AutoavaliacaoResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -28,7 +31,12 @@ public class AutoavaliacaoRestController {
 
     @PostMapping
     public ResponseEntity<AutoavaliacaoResponse> create(@RequestBody @Valid AutoavaliacaoRequest request, UriComponentsBuilder uriComponentsBuilder) {
-        final AutoavaliacaoResponse response = autoavaliacaoController.create(request);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
+
+        Long idUser = user.getId();
+
+        final AutoavaliacaoResponse response = autoavaliacaoController.create(request, idUser);
         URI uri = uriComponentsBuilder.path("/autoavaliacoes/{id}")
                 .buildAndExpand(response.id())
                 .toUri();
@@ -43,7 +51,15 @@ public class AutoavaliacaoRestController {
 
     @GetMapping
     public ResponseEntity<List<AutoavaliacaoResponse>> listarAvaliacoes() {
-        final List<AutoavaliacaoResponse> response = autoavaliacaoController.listarAvaliacoes();
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
+
+        Long idUser = user.getId();
+
+        final List<AutoavaliacaoResponse> response =
+                autoavaliacaoController.listarAvaliacoes(idUser);
+
         return ResponseEntity.ok(response);
     }
 }

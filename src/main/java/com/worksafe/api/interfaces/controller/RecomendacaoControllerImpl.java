@@ -23,8 +23,8 @@ public final class RecomendacaoControllerImpl implements  RecomendacaoController
     }
 
     @Override
-    public RecomendacaoResponse create(RecomendacaoRequest request) {
-        Recomendacao recomendacao = RecomendacaoMapper.toModel(request);
+    public RecomendacaoResponse create(RecomendacaoRequest request, Long idUser) {
+        Recomendacao recomendacao = RecomendacaoMapper.toModel(request, idUser);
         Recomendacao createdRecomendacao = createRecomendacaoUseCase.execute(recomendacao);
         return RecomendacaoMapper.toResponse(createdRecomendacao);
     }
@@ -36,8 +36,8 @@ public final class RecomendacaoControllerImpl implements  RecomendacaoController
     }
 
     @Override
-    public List<RecomendacaoResponse> listarTodasRecomendacoes() {
-        List<Recomendacao> recomendacoes = listarTodasRecomendacoesUseCase.execute();
+    public List<RecomendacaoResponse> listarTodasRecomendacoes(Long idUser) {
+        List<Recomendacao> recomendacoes = listarTodasRecomendacoesUseCase.execute(idUser);
         return recomendacoes.stream()
                 .map(RecomendacaoMapper::toResponse)
                 .toList();

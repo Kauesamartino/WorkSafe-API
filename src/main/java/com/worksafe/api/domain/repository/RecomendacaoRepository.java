@@ -5,7 +5,7 @@ import com.worksafe.api.domain.entity.Recomendacao;
 import java.util.List;
 
 public interface RecomendacaoRepository {
-    List<Recomendacao> findAll();
+    List<Recomendacao> findAll(Long idUser);
 
     Recomendacao findById(Long id);
 

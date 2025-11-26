@@ -14,7 +14,7 @@ public final class ListarTodasAutoavaliacoesUseCaseImpl implements  ListarTodasA
     }
 
     @Override
-    public List<Autoavaliacao> execute() {
-        return autoavaliacaoRepository.findAll();
+    public List<Autoavaliacao> execute(Long idUser) {
+        return autoavaliacaoRepository.findAll(idUser);
     }
 }

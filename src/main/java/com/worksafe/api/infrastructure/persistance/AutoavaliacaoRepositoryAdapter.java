@@ -27,11 +27,11 @@ public class AutoavaliacaoRepositoryAdapter implements AutoavaliacaoRepository {
     }
 
     @Override
-    public List<Autoavaliacao> findAll() {
+    public List<Autoavaliacao> findAll(Long idUser) {
         logger.info("Buscando todas as autoavaliações");
-
+        JpaUsuarioEntity jpaUsuarioEntity = jpaUsuarioRepository.getReferenceById(idUser);
         try {
-            List<JpaAutoavaliacaoEntity> entities = jpaAutoavaliacaoRepository.findAll();
+            List<JpaAutoavaliacaoEntity> entities = jpaAutoavaliacaoRepository.findAllByJpaUsuarioEntity(jpaUsuarioEntity);
             logger.info("Autoavaliações encontradas: " + entities.size());
             return entities.stream()
                     .map(AutoavaliacaoMapper::entityToDomain)
