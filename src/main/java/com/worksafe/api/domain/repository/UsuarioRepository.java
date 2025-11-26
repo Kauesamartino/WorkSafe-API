@@ -4,6 +4,7 @@ import com.worksafe.api.domain.entity.Usuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+
 public interface UsuarioRepository {
 
     Usuario save(Usuario usuario);
@@ -17,4 +18,5 @@ public interface UsuarioRepository {
     void deactivate(String cpf);
 
     Usuario findById(Long id);
+
 }

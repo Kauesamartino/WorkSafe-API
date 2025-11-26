@@ -34,15 +34,15 @@ public class DatabaseConfig {
     }
 
     @Bean
-    public RecomendacaoRepository recomendacaoRepository(JpaRecomendacaoRepository jpaRecomendacaoRepository, JpaUsuarioRepository jpaUsuarioRepository) {
+    public RecomendacaoRepository recomendacaoRepository(JpaRecomendacaoRepository jpaRecomendacaoRepository, JpaUsuarioRepository jpaUsuarioRepository, JpaCredenciaisRepository jpaCredenciaisRepository) {
         final Logger logger = LoggerFactory.getLogger(RecomendacaoRepositoryAdapter.class);
-        return new RecomendacaoRepositoryAdapter(jpaRecomendacaoRepository, jpaUsuarioRepository, logger);
+        return new RecomendacaoRepositoryAdapter(jpaRecomendacaoRepository, jpaUsuarioRepository, jpaCredenciaisRepository, logger);
     }
 
     @Bean
-    public AutoavaliacaoRepository autoavaliacaoRepository(JpaAutoavaliacaoRepository jpaAutoavaliacaoRepository, JpaUsuarioRepository jpaUsuarioRepository) {
+    public AutoavaliacaoRepository autoavaliacaoRepository(JpaAutoavaliacaoRepository jpaAutoavaliacaoRepository, JpaUsuarioRepository jpaUsuarioRepository, JpaCredenciaisRepository jpaCredenciaisRepository) {
         final Logger logger = LoggerFactory.getLogger(AutoavaliacaoRepositoryAdapter.class);
-        return new AutoavaliacaoRepositoryAdapter(jpaAutoavaliacaoRepository, jpaUsuarioRepository, logger);
+        return new AutoavaliacaoRepositoryAdapter(jpaAutoavaliacaoRepository, jpaCredenciaisRepository, jpaUsuarioRepository, logger);
     }
 
     @Bean
