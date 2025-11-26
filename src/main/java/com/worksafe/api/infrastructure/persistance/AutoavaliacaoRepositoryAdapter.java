@@ -33,8 +33,9 @@ public class AutoavaliacaoRepositoryAdapter implements AutoavaliacaoRepository {
     @Override
     public List<Autoavaliacao> findAll(Long idUser) {
         logger.info("Buscando todas as autoavaliações");
-        JpaUsuarioEntity jpaUsuarioEntity = jpaUsuarioRepository.findById(idUser)
-                .orElseThrow(() -> new EntidadeNaoEncontradaException("Usuário não encontrado com ID: " + idUser));
+        JpaCredenciaisEntity jpaCredenciaisEntity = jpaCredenciaisRepository.getReferenceById(idUser);
+        JpaUsuarioEntity jpaUsuarioEntity = jpaUsuarioRepository.findByCredenciais(jpaCredenciaisEntity)
+                .orElseThrow(() -> new EntidadeNaoEncontradaException("Usuário não encontrado com as credenciais ID: " + idUser));
         try {
             List<JpaAutoavaliacaoEntity> entities = jpaAutoavaliacaoRepository.findAllByJpaUsuarioEntity(jpaUsuarioEntity);
             logger.info("Autoavaliações encontradas: " + entities.size());
