@@ -281,7 +281,7 @@ public class Usuario {
         }
 
         //valida se a palavra tem no minimo 3 caracteres
-        if(departamento.length() < 3){
+        if(departamento.length() < 2){
             throw new ValidacaoDominioException("Nome deve ter pelo menos 3 caracteres");
         }
     }
