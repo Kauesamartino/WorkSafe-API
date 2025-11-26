@@ -134,7 +134,7 @@ public class UsuarioRepositoryAdapter implements UsuarioRepository {
         try {
             JpaUsuarioEntity jpaUsuarioEntity = jpaUsuarioRepository.findById(id)
                     .orElseThrow(() -> new EntidadeNaoEncontradaException("Usuário não encontrado com o ID: " + id));
-            logger.info("Usuario encontrado: " + jpaUsuarioEntity.getId() + " " + jpaUsuarioEntity.getSobrenome());
+            logger.info("Usuario encontrado: " + jpaUsuarioEntity.getId() + " " + jpaUsuarioEntity.getNome());
             return UsuarioMapper.entityToDomain(jpaUsuarioEntity);
         } catch (DataAccessException e){
             logger.error("Erro ao buscar usuario: " + e.getMessage(), e);
