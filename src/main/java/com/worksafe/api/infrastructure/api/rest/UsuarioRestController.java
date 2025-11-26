@@ -55,11 +55,12 @@ public class UsuarioRestController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("/username/{username}")
     public ResponseEntity<UsuarioDetailsResponse> findByUsername(@PathVariable String username) {
         final UsuarioDetailsResponse response = usuarioController.findByUsername(username);
         return ResponseEntity.ok(response);
     }
+
     @DeleteMapping("/{cpf}")
     public ResponseEntity<Void> deleteUsuario(@PathVariable String cpf) {
         usuarioController.deleteByCpf(cpf);
