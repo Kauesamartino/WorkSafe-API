@@ -1,5 +1,6 @@
 package com.worksafe.api.infrastructure.api.rest;
 
+import com.worksafe.api.infrastructure.security.CustomUserDetails;
 import com.worksafe.api.interfaces.controller.UsuarioController;
 import com.worksafe.api.interfaces.dto.input.UsuarioRequest;
 import com.worksafe.api.interfaces.dto.output.UsuarioDetailsResponse;
@@ -7,6 +8,8 @@ import com.worksafe.api.interfaces.dto.output.UsuarioResponse;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -46,6 +49,16 @@ public class UsuarioRestController {
     @GetMapping("/{cpf}")
     public ResponseEntity<UsuarioResponse> details(@PathVariable String cpf) {
         final UsuarioResponse response = usuarioController.findByCpf(cpf);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/id")
+    public ResponseEntity<UsuarioResponse> findById() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
+
+        Long idUser = user.getId();
+        final UsuarioResponse response = usuarioController.findById(idUser);
         return ResponseEntity.ok(response);
     }
 

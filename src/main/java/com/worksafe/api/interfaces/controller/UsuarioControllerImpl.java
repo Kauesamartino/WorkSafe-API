@@ -17,19 +17,21 @@ public final class UsuarioControllerImpl implements UsuarioController {
     private final BuscarUsuarioPorCpfUseCase buscarUsuarioPorCpfUseCase;
     private final DeletarUsuarioUseCase deletarUsuarioUseCase;
     private final DesativarUsuarioUseCase desativarUsuarioUseCase;
+    private final BuscarUsuarioPorIdUseCase buscarUsuarioPorIdUseCase;
 
     public UsuarioControllerImpl(
             CriarUsuarioUseCase criarUsuarioUseCase,
             ListarUsuariosUseCase listarUsuariosUseCase,
             BuscarUsuarioPorCpfUseCase buscarUsuarioPorCpfUseCase,
             DeletarUsuarioUseCase deletarUsuarioUseCase,
-            DesativarUsuarioUseCase desativarUsuarioUseCase
+            DesativarUsuarioUseCase desativarUsuarioUseCase, BuscarUsuarioPorIdUseCase buscarUsuarioPorIdUseCase
     ) {
         this.criarUsuarioUseCase = criarUsuarioUseCase;
         this.listarUsuariosUseCase = listarUsuariosUseCase;
         this.buscarUsuarioPorCpfUseCase = buscarUsuarioPorCpfUseCase;
         this.deletarUsuarioUseCase = deletarUsuarioUseCase;
         this.desativarUsuarioUseCase = desativarUsuarioUseCase;
+        this.buscarUsuarioPorIdUseCase = buscarUsuarioPorIdUseCase;
     }
 
     @Override
@@ -60,5 +62,11 @@ public final class UsuarioControllerImpl implements UsuarioController {
     @Override
     public void deactivateByCpf(String cpf) {
         desativarUsuarioUseCase.execute(cpf);
+    }
+
+    @Override
+    public UsuarioResponse findById(Long idUser) {
+        Usuario usuario = buscarUsuarioPorIdUseCase.execute(idUser);
+        return UsuarioMapper.toResponse(usuario);
     }
 }

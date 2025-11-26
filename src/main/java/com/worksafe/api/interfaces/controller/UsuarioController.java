@@ -46,4 +46,12 @@ public interface UsuarioController {
      * @param cpf CPF do usuário a ser desativado.
      */
     void deactivateByCpf(String cpf);
+
+    /**
+     * Encontra um usuário pelo seu ID.
+     *
+     * @param idUser ID do usuário a ser encontrado.
+     * @return Objeto de resposta contendo os detalhes do usuário.
+     */
+    UsuarioResponse findById(Long idUser);
 }

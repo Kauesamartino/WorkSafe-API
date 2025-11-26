@@ -33,12 +33,12 @@ public class ControllersConfig {
     public UsuarioController usuarioController(
             CriarUsuarioUseCase criarUsuarioUseCase, ListarUsuariosUseCase listarUsuariosUseCase,
             BuscarUsuarioPorCpfUseCase buscarUsuarioPorCpfUseCase, DeletarUsuarioUseCase deletarUsuarioUseCase,
-            DesativarUsuarioUseCase desativarUsuarioUseCase
+            DesativarUsuarioUseCase desativarUsuarioUseCase, BuscarUsuarioPorIdUseCase buscarUsuarioPorIdUseCase
     ) {
         return new UsuarioControllerImpl(
                 criarUsuarioUseCase, listarUsuariosUseCase,
                 buscarUsuarioPorCpfUseCase, deletarUsuarioUseCase,
-                desativarUsuarioUseCase);
+                desativarUsuarioUseCase, buscarUsuarioPorIdUseCase);
     }
 
     @Bean
